@@ -5,6 +5,7 @@ import {
   ImageBackground,
   StatusBar,
   StyleSheet,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -137,7 +138,13 @@ const GamePlayScreen = () => {
   }, []);
 
   useEffect(() => {
-    console.log('true answer ', trueAnswer);
+    ToastAndroid.showWithGravityAndOffset(
+      `True Answer: ${trueAnswer}`,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
   }, [trueAnswer]);
 
   useEffect(() => {
