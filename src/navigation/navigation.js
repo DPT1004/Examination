@@ -1,46 +1,21 @@
 import React from 'react';
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {screenName} from '../const/screenName';
+import HomeScreen from '../screens/home_screen';
+import GamePlayScreen from '../screens/gamePlay/game_play_screen';
 
 const Stack = createNativeStackNavigator();
 
-function HomeScreen() {
-    const navigation = useNavigation()
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Home Screen</Text>
-            <Button
-                title="Go to User"
-                onPress={() => navigation.navigate('user')}
-            />
-        </View>
-    );
-}
-
-function UserScreen() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>User Screen</Text>
-        </View>
-    );
-}
-
 const MainNavigation = () => {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator >
-                <Stack.Screen
-                    name="home"
-                    component={HomeScreen}
-                />
-                <Stack.Screen
-                    name="user"
-                    component={UserScreen}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name={screenName.Home} component={HomeScreen} />
+        <Stack.Screen name={screenName.GamePlay} component={GamePlayScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 export default MainNavigation;
